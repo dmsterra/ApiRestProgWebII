@@ -1,0 +1,23 @@
+package br.com.senac.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import br.com.senac.entity.Estudante;
+import br.com.senac.repository.EstudanteRepository;
+
+@Service
+public class EstudanteService {
+
+	@Autowired
+	private EstudanteRepository estudanteRepo;
+	
+	
+	public Estudante salvar(Estudante estudante) {
+		return estudanteRepo.save(estudante);
+	}
+	
+	
+	
+	
+}
