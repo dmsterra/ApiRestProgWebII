@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -73,5 +74,11 @@ public class EstudanteResource {
 		EstudanteDTO atualizadoEstudante = mapper.map(estudante, EstudanteDTO.class);
 		
 		return ResponseEntity.ok().body(atualizadoEstudante);
+	}
+	
+	@DeleteMapping("/{id}")
+	public ResponseEntity<Boolean> excluiEstudante(@PathVariable("id") Integer id){
+		Boolean flag = estudanteService.deleteEstudante(id);
+		return ResponseEntity.ok().body(flag);
 	}
 }
